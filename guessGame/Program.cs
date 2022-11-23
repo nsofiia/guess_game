@@ -12,13 +12,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
             int closePlus = randomNumber + 5;
             int closeMinus = randomNumber - 5;
             int guess = 0;
-            int wrongGuessCount = 0;
+            int wrongGuessCount = 3;
             Console.WriteLine("Hello Traveler!");
-            Console.WriteLine(randomNumber);
-            while (wrongGuessCount < 3)
+            //Console.WriteLine(randomNumber);
+            while (wrongGuessCount != 0)
             {
                 Console.WriteLine("Guess a number I have on my mind from 1 to 100\n" +
-                        "You have only 3 wrong answers before game ends: ");
+                        $"You have {wrongGuessCount} wrong answers before the game ends: ");
                 try
                 {
                     guess = Convert.ToInt32(Console.ReadLine());
@@ -30,29 +30,29 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
                 if (randomNumber == guess)
                 {
-                    Console.WriteLine("you win");
-                    guess = 0;
+                    Console.WriteLine("you win, number of guesses refreshed!");
+                    wrongGuessCount = 3;
                     continue;
                 }
                 if (randomNumber > guess)
                 {
-                    if (guess == closeMinus || guess == closePlus)
+                    if (guess > closeMinus & guess < closePlus)
                     {
                         Console.WriteLine("You're close!");
                         wrongGuessCount++;
                     }
                     Console.WriteLine("too low");
-                    wrongGuessCount++;
+                    wrongGuessCount--;
                 }
                 if (randomNumber < guess)
                 {
-                    if (guess == closeMinus || guess == closePlus)
+                    if (guess > closeMinus && guess < closePlus)
                     {
                         Console.WriteLine("You're close!");
-                        wrongGuessCount++;
+                        wrongGuessCount--;
                     }
                     Console.WriteLine("too high");
-                    wrongGuessCount++;
+                    wrongGuessCount--;
                 }
             }
             Console.WriteLine("guessed wrong 3 times, you lost, game over");
