@@ -39,11 +39,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         wrongGuesses++;
                     }
                 }
-
             }
             Console.WriteLine("guessed wrong 3 times, you lost, game over");
             Console.ReadKey(true);
         }
-
     }
 }
