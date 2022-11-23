@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1704.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "newProject", "newProject\newProject.csproj", "{5681F20C-CC8F-494D-AC74-9F74011AB3B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuberGuessing", "newProject\nuberGuessing.csproj", "{5681F20C-CC8F-494D-AC74-9F74011AB3B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
