@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
@@ -7,41 +8,57 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             Random randomNumberGenerator = new Random();
-            double randomNumber = randomNumberGenerator.Next(100);
-            double closePlus = randomNumber + 5;
-            double closeMinus = randomNumber - 5;
-            for (int wrongGuesses = 0; wrongGuesses < 3; wrongGuesses++)
+            int randomNumber = randomNumberGenerator.Next(101);
+            int closePlus = randomNumber + 5;
+            int closeMinus = randomNumber - 5;
+            int guess = 0;
+            int wrongGuessCount = 0;
+            Console.WriteLine("Hello Traveler!");
+            Console.WriteLine(randomNumber);
+            while (wrongGuessCount < 3)
             {
-                Console.WriteLine("Hello Traveler! Can you guess a number I have on my mind from 1 to 100?\n" +
-                        "Enter number and press enter, you can have only 3 wrong answers: ");
-                double guess = Convert.ToDouble(Console.ReadLine());
-
+                Console.WriteLine("Guess a number I have on my mind from 1 to 100\n" +
+                        "You have only 3 wrong answers before game ends: ");
+                try
+                {
+                    guess = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (System.FormatException)
+                {
+                    Console.WriteLine("this input is not supported, enter only numbers");
+                    continue;
+                }
                 if (randomNumber == guess)
                 {
-                    Console.Write("you win");
-                    break;
+                    Console.WriteLine("you win");
+                    guess = 0;
+                    continue;
                 }
                 if (randomNumber > guess)
                 {
-                    Console.WriteLine("too high");
                     if (guess == closeMinus || guess == closePlus)
                     {
                         Console.WriteLine("You're close!");
-                        wrongGuesses++;
+                        wrongGuessCount++;
                     }
+                    Console.WriteLine("too low");
+                    wrongGuessCount++;
                 }
                 if (randomNumber < guess)
                 {
-                    Console.WriteLine("too low");
                     if (guess == closeMinus || guess == closePlus)
                     {
                         Console.WriteLine("You're close!");
-                        wrongGuesses++;
+                        wrongGuessCount++;
                     }
+                    Console.WriteLine("too high");
+                    wrongGuessCount++;
                 }
+
             }
             Console.WriteLine("guessed wrong 3 times, you lost, game over");
             Console.ReadKey(true);
         }
+
     }
 }
