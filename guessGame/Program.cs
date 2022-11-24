@@ -15,7 +15,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 int closePlus = randomNumber + 5;
                 int closeMinus = randomNumber - 5;
                 Console.WriteLine("Hello Traveler!");
-                Console.WriteLine(randomNumber);
+                // Console.WriteLine(randomNumber);
                 while (wrongGuessCount != 0)
                 {
                     Console.WriteLine("Guess a number from 1 to 100\n" +
