@@ -7,57 +7,59 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            Random randomNumberGenerator = new Random();
-            int randomNumber = randomNumberGenerator.Next(101);
-            int closePlus = randomNumber + 5;
-            int closeMinus = randomNumber - 5;
-            int guess = 0;
-            int wrongGuessCount = 3;
-            Console.WriteLine("Hello Traveler!");
-            //Console.WriteLine(randomNumber);
-            while (wrongGuessCount != 0)
+            while (true)
             {
-                Console.WriteLine("Guess a number I have on my mind from 1 to 100\n" +
+                int wrongGuessCount = 3;
+                Random randomNumberGenerator = new Random();
+                int randomNumber = randomNumberGenerator.Next(101);
+                int closePlus = randomNumber + 5;
+                int closeMinus = randomNumber - 5;
+                Console.WriteLine("Hello Traveler!");
+                Console.WriteLine(randomNumber);
+                while (wrongGuessCount != 0)
+                {
+                    Console.WriteLine("Guess a number from 1 to 100\n" +
                         $"You have {wrongGuessCount} wrong answers before the game ends: ");
-                try
-                {
-                    guess = Convert.ToInt32(Console.ReadLine());
-                }
-                catch (System.FormatException)
-                {
-                    Console.WriteLine("this input is not supported, enter only numbers");
-                    continue;
-                }
-                if (randomNumber == guess)
-                {
-                    Console.WriteLine("you win, number of guesses refreshed!");
-                    wrongGuessCount = 3;
-                    continue;
-                }
-                if (randomNumber > guess)
-                {
-                    if (guess > closeMinus & guess < closePlus)
+                    int guess = 0;
+                    while (guess == 0)
                     {
-                        Console.WriteLine("You're close!");
-                        wrongGuessCount++;
+                        try
+                        {
+                            guess = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (System.FormatException)
+                        {
+                            Console.WriteLine("this input is not supported, enter only numbers from 1 to 100");
+                            continue;
+                        }
                     }
-                    Console.WriteLine("too low");
-                    wrongGuessCount--;
-                }
-                if (randomNumber < guess)
-                {
-                    if (guess > closeMinus && guess < closePlus)
+                    if (guess != randomNumber)
                     {
-                        Console.WriteLine("You're close!");
+                        if (guess >= closeMinus & guess <= closePlus)
+                        {
+                            Console.WriteLine("You're close!");
+                        }
+                        if (guess < randomNumber)
+                        {
+                            Console.WriteLine("too low");
+                        }
+                        if (guess > randomNumber)
+                        {
+                            Console.WriteLine("too high");
+                        }
                         wrongGuessCount--;
                     }
-                    Console.WriteLine("too high");
-                    wrongGuessCount--;
+                    else
+                    {
+                        Console.WriteLine("WIN --- number of guesses refreshed!...starting over");
+                        break;
+                    }
                 }
+                Console.WriteLine("GAME OVER --- guessed wrong 3 times");
+                Console.ReadKey(true);
+                break;
             }
-            Console.WriteLine("guessed wrong 3 times, you lost, game over");
-            Console.ReadKey(true);
         }
-
     }
 }
+
