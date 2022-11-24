@@ -1,5 +1,4 @@
 ﻿using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
@@ -15,12 +14,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 int closePlus = randomNumber + 5;
                 int closeMinus = randomNumber - 5;
                 Console.WriteLine("Hello Traveler!");
-                // Console.WriteLine(randomNumber);
+                //  Console.WriteLine(randomNumber);
+
                 while (wrongGuessCount != 0)
                 {
                     Console.WriteLine("Guess a number from 1 to 100\n" +
                         $"You have {wrongGuessCount} wrong answers before the game ends: ");
                     int guess = 0;
+
                     while (guess == 0)
                     {
                         try
@@ -33,9 +34,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
                             continue;
                         }
                     }
+
                     if (guess != randomNumber)
                     {
-                        if (guess >= closeMinus & guess <= closePlus)
+                        if (guess >= closeMinus && guess <= closePlus)
                         {
                             Console.WriteLine("You're close!");
                         }
@@ -54,10 +56,36 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         Console.WriteLine("WIN --- number of guesses refreshed!...starting over");
                         break;
                     }
+
+                    if (wrongGuessCount == 0)
+                    {
+                        string answer = "0";
+                        Console.WriteLine("GAME OVER --- guessed wrong 3 times" +
+                            "\n Would you like to star over? y - to start over; n - to exit ");
+
+                        while (answer == "0")
+                        {
+                            try
+                            {
+                                answer = Console.ReadLine().ToLower();
+                            }
+                            catch (System.FormatException)
+                            {
+                                Console.WriteLine("this input is not supported, enter y - to restart game or n - to exit");
+                                continue;
+                            }
+                        }
+
+                        if (answer == "y")
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            System.Environment.Exit(1);
+                        }
+                    }
                 }
-                Console.WriteLine("GAME OVER --- guessed wrong 3 times");
-                Console.ReadKey(true);
-                break;
             }
         }
     }
