@@ -12,10 +12,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 int wrongGuessCount = MAX_GUESSES;
                 Random randomNumberGenerator = new Random();
                 int randomNumber = randomNumberGenerator.Next(101);
-                int closePlus = randomNumber + 5; // 15
-                int closeMinus = randomNumber - 5; // 5
+                int closePlus = randomNumber + 5;
+                int closeMinus = randomNumber - 5;
                 Console.WriteLine("Hello Traveler!");
-                //  Console.WriteLine(randomNumber); // 10 
+                //  Console.WriteLine(randomNumber);
 
                 while (wrongGuessCount != 0)
                 {
@@ -66,15 +66,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
                         while (answer == "0")
                         {
-                            try
-                            {
-                                answer = Console.ReadLine().ToLower();
-                            }
-                            catch (System.FormatException)
-                            {
-                                Console.WriteLine("this input is not supported, enter y - to restart game or n - to exit");
-                                continue;
-                            }
+                            answer = Console.ReadLine().ToLower();
                         }
 
                         if (answer == "y")
