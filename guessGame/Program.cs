@@ -10,8 +10,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
             {
                 const int MAX_GUESSES = 3;
                 int wrongGuessCount = MAX_GUESSES;
-                Random randomNumberGenerator = new Random();
-                int randomNumber = randomNumberGenerator.Next(101);
+                //    Random randomNumberGenerator = new Random();
+                int randomNumber = 1; //randomNumberGenerator.Next(101);
                 int closePlus = randomNumber + 5;
                 int closeMinus = randomNumber - 5;
                 Console.WriteLine("Hello Traveler!");
@@ -61,7 +61,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     if (wrongGuessCount == 0)
                     {
                         string answer = "0";
-                        Console.WriteLine("GAME OVER --- guessed wrong 3 times" +
+                        Console.WriteLine($"GAME OVER --- guessed wrong {MAX_GUESSES} times" +
                             "\n Would you like to star over? y - to start over; n - to exit ");
 
                         while (answer == "0")
