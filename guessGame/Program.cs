@@ -4,18 +4,21 @@ namespace MyApp // Note: actual namespace depends on the project name.
 {
     internal class Program
     {
+        const int MAX_GUESSES = 3;
+
         static void Main(string[] args)
         {
             while (true)
             {
-                const int MAX_GUESSES = 3;
                 int wrongGuessCount = MAX_GUESSES;
-                //    Random randomNumberGenerator = new Random();
-                int randomNumber = 1; //randomNumberGenerator.Next(101);
+                Random randomNumberGenerator = new Random();
+                int randomNumber = randomNumberGenerator.Next(101);
                 int closePlus = randomNumber + 5;
                 int closeMinus = randomNumber - 5;
+                int absolute = Math.Abs(closePlus - closeMinus);
+                Console.WriteLine(absolute);
                 Console.WriteLine("Hello Traveler!");
-                //  Console.WriteLine(randomNumber);
+                Console.WriteLine(randomNumber);
 
                 while (wrongGuessCount != 0)
                 {
