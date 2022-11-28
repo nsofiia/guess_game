@@ -63,14 +63,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
                     if (wrongGuessCount == 0)
                     {
-                        string answer = "0";
                         Console.WriteLine($"GAME OVER --- guessed wrong {MAX_GUESSES} times" +
-                            "\n Would you like to star over? y - to start over; n - to exit ");
+                            "\nWould you like to star over? y - to start over; n - to exit ");
 
-                        while (answer == "0")
-                        {
-                            answer = Console.ReadLine().ToLower();
-                        }
+                        string answer = Console.ReadLine().ToLower();
 
                         if (answer == "y")
                         {
