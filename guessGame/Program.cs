@@ -37,7 +37,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     }
 
                     int guessOffset = Math.Abs(randomNumber - guess);
-                    Console.WriteLine(guessOffset + " guessOffset ---");
+                    //Console.WriteLine(guessOffset + " guessOffset ---");
 
                     if (guess != randomNumber)
                     {
