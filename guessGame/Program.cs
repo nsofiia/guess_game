@@ -21,9 +21,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     Console.WriteLine("Guess a number from 1 to 100\n" +
                         $"You have {wrongGuessCount} wrong answers before the game ends: ");
-                    int guess = 0;
+                    int guess = 101;
 
-                    while (guess == 0 || guess < 1)
+                    while (guess > 100 || guess < 1)
                     {
                         try
                         {
