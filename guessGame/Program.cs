@@ -15,9 +15,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
             while (true)
             {
                 int wrongGuessCount = MAX_GUESSES;
-                int randomNumber = randomNumberGenerator.Next(MIN_NUMBER, MAX_NUMBER+1);
+                int randomNumber = randomNumberGenerator.Next(MAX_NUMBER)+1;
                 Console.WriteLine("Hello Traveler!");
-                //Console.WriteLine(randomNumber);
+                Console.WriteLine(randomNumber);
 
                 while (wrongGuessCount != 0)
                 {
