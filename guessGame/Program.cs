@@ -5,6 +5,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
     internal class Program
     {
         const int MAX_GUESSES = 3;
+        const int closeGuess = 5;
 
         static void Main(string[] args)
         {
@@ -13,12 +14,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 int wrongGuessCount = MAX_GUESSES;
                 Random randomNumberGenerator = new Random();
                 int randomNumber = randomNumberGenerator.Next(101);
-                int closePlus = randomNumber + 5;
-                int closeMinus = randomNumber - 5;
-                int absolute = Math.Abs(closePlus - closeMinus);
-                // Console.WriteLine(absolute);
                 Console.WriteLine("Hello Traveler!");
-                // Console.WriteLine(randomNumber);
+                //WriteLine(randomNumber);
 
                 while (wrongGuessCount != 0)
                 {
@@ -41,7 +38,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
                     if (guess != randomNumber)
                     {
-                        if (guess >= closeMinus && guess <= closePlus)
+                        if (Math.Abs(randomNumber-guess) != closeGuess)
                         {
                             Console.WriteLine("You're close!");
                         }
@@ -74,7 +71,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         }
                         else
                         {
-                            System.Environment.Exit(1);
+                            return;
                         }
                     }
                 }
