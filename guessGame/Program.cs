@@ -6,6 +6,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         const int MAX_GUESSES = 3;
         const int CLOSE_GUESS = 5;
+        const int MAX_NUMBER = 100;
+        const int MIN_NUMBER = 1;
 
         static void Main(string[] args)
         {
@@ -13,17 +15,17 @@ namespace MyApp // Note: actual namespace depends on the project name.
             while (true)
             {
                 int wrongGuessCount = MAX_GUESSES;
-                int randomNumber = randomNumberGenerator.Next(1, 101);
+                int randomNumber = randomNumberGenerator.Next(MIN_NUMBER, MAX_NUMBER+1);
                 Console.WriteLine("Hello Traveler!");
                 //Console.WriteLine(randomNumber);
 
                 while (wrongGuessCount != 0)
                 {
-                    Console.WriteLine("Guess a number from 1 to 100\n" +
+                    Console.WriteLine($"Guess a number from {MIN_NUMBER} to {MAX_NUMBER}\n" +
                         $"You have {wrongGuessCount} wrong answers before the game ends: ");
                     int guess = 101;
 
-                    while (guess > 100 || guess < 1)
+                    while (guess > MAX_NUMBER || guess < MIN_NUMBER)
                     {
                         try
                         {
