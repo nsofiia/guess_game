@@ -13,15 +13,17 @@ namespace MyApp // Note: actual namespace depends on the project name.
             {
                 int wrongGuessCount = MAX_GUESSES;
                 Random randomNumberGenerator = new Random();
-                int randomNumber = randomNumberGenerator.Next(101);
+                int randomNumber = randomNumberGenerator.Next(1, 101);
                 Console.WriteLine("Hello Traveler!");
-                //WriteLine(randomNumber);
+                Console.WriteLine(randomNumber);
 
                 while (wrongGuessCount != 0)
                 {
                     Console.WriteLine("Guess a number from 1 to 100\n" +
                         $"You have {wrongGuessCount} wrong answers before the game ends: ");
                     int guess = 0;
+                    int guessOffset = Math.Abs(randomNumber - guess);
+                    Console.WriteLine(guessOffset);
 
                     while (guess == 0)
                     {
@@ -38,7 +40,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
                     if (guess != randomNumber)
                     {
-                        if (Math.Abs(randomNumber-guess) != closeGuess)
+                        if (guessOffset <= closeGuess)
                         {
                             Console.WriteLine("You're close!");
                         }
