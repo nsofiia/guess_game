@@ -22,8 +22,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     Console.WriteLine("Guess a number from 1 to 100\n" +
                         $"You have {wrongGuessCount} wrong answers before the game ends: ");
                     int guess = 0;
-                    int guessOffset = Math.Abs(randomNumber - guess);
-                    Console.WriteLine(guessOffset);
 
                     while (guess == 0)
                     {
@@ -37,6 +35,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
                             continue;
                         }
                     }
+
+                    int guessOffset = Math.Abs(randomNumber - guess);
+                    Console.WriteLine(guessOffset + " guessOffset ---");
 
                     if (guess != randomNumber)
                     {
