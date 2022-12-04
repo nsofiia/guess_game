@@ -9,13 +9,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         static void Main(string[] args)
         {
+            Random randomNumberGenerator = new Random();
             while (true)
             {
                 int wrongGuessCount = MAX_GUESSES;
-                Random randomNumberGenerator = new Random();
                 int randomNumber = randomNumberGenerator.Next(1, 101);
                 Console.WriteLine("Hello Traveler!");
-                //Console.WriteLine(randomNumber);
+                Console.WriteLine(randomNumber);
 
                 while (wrongGuessCount != 0)
                 {
